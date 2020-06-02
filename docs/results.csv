@@ -1,0 +1,49 @@
+scenario,mode,status,result
+"{'chain': [1, 2, 3]}",dynamic,SUCCESS,3
+"{'chain': [1, 2, 3]}",static,SUCCESS,3
+"{'chain': [1, 'err', 3]}",dynamic,TIMEOUT,The operation timed out.
+"{'chain': [1, 'err', 3]}",static,ERROR,'err'
+"{'chain': [1, {'chain': [1, 2, 3]}, 3]}",dynamic,SUCCESS,3
+"{'chain': [1, {'chain': [1, 2, 3]}, 3]}",static,SUCCESS,3
+"{'chain': [1, {'chain': [1, 'err', 3]}, 3]}",dynamic,TIMEOUT,The operation timed out.
+"{'chain': [1, {'chain': [1, 'err', 3]}, 3]}",static,ERROR,'err'
+"{'chain': [1, {'group': [1, 2, 3]}, 3]}",dynamic,SUCCESS,3
+"{'chain': [1, {'group': [1, 2, 3]}, 3]}",static,SUCCESS,3
+"{'chain': [1, {'group': [1, 'err', 3]}, 3]}",dynamic,TIMEOUT,The operation timed out.
+"{'chain': [1, {'group': [1, 'err', 3]}, 3]}",static,ERROR,'err'
+"{'chain': [1, {'chord': [1, 2, 3]}, 3]}",dynamic,SUCCESS,3
+"{'chain': [1, {'chord': [1, 2, 3]}, 3]}",static,SUCCESS,3
+"{'chain': [1, {'chord': [1, 'err', 3]}, 3]}",dynamic,TIMEOUT,The operation timed out.
+"{'chain': [1, {'chord': [1, 'err', 3]}, 3]}",static,ERROR,'err'
+"{'group': [1, 2, 3]}",dynamic,SUCCESS,"[1, 3, 2]"
+"{'group': [1, 2, 3]}",static,SUCCESS,"[1, 2, 3]"
+"{'group': [1, 'err', 3]}",dynamic,FAILED,"Callback error: ChordError('Dependency 2db0da3b-99b7-467b-a5bf-c74cc814fccc raised ValueError(""\'err\'"",)',)"
+"{'group': [1, 'err', 3]}",static,FAILED,'err'
+"{'group': [1, {'chain': [1, 2, 3]}, 3]}",dynamic,SUCCESS,"[1, 3, 3]"
+"{'group': [1, {'chain': [1, 2, 3]}, 3]}",static,SUCCESS,"[1, 3, 3]"
+"{'group': [1, {'chain': [1, 'err', 3]}, 3]}",dynamic,TIMEOUT,The operation timed out.
+"{'group': [1, {'chain': [1, 'err', 3]}, 3]}",static,TIMEOUT,The operation timed out.
+"{'group': [1, {'group': [1, 2, 3]}, 3]}",dynamic,SUCCESS,"[1, 3, [1, 2, 3]]"
+"{'group': [1, {'group': [1, 2, 3]}, 3]}",static,SUCCESS,"[1, 1, 2, 3, 3]"
+"{'group': [1, {'group': [1, 'err', 3]}, 3]}",dynamic,TIMEOUT,The operation timed out.
+"{'group': [1, {'group': [1, 'err', 3]}, 3]}",static,FAILED,'err'
+"{'group': [1, {'chord': [1, 2, 3]}, 3]}",dynamic,SUCCESS,"[1, 3, 6]"
+"{'group': [1, {'chord': [1, 2, 3]}, 3]}",static,SUCCESS,"[1, 6, 3]"
+"{'group': [1, {'chord': [1, 'err', 3]}, 3]}",dynamic,TIMEOUT,The operation timed out.
+"{'group': [1, {'chord': [1, 'err', 3]}, 3]}",static,FAILED,"Callback error: ChordError('Dependency d6fa8e54-0fd7-4111-b583-cbe25c1012fc raised ValueError(""\'err\'"",)',)"
+"{'chord': [1, 2, 3]}",dynamic,SUCCESS,6
+"{'chord': [1, 2, 3]}",static,SUCCESS,6
+"{'chord': [1, 'err', 3]}",dynamic,FAILED,"Callback error: ChordError('Dependency 0cd34927-4e2d-455f-b06d-a57c9a2bacf7 raised ValueError(""\'err\'"",)',)"
+"{'chord': [1, 'err', 3]}",static,ERROR,'err'
+"{'chord': [1, {'chain': [1, 2, 3]}, 3]}",dynamic,SUCCESS,7
+"{'chord': [1, {'chain': [1, 2, 3]}, 3]}",static,SUCCESS,7
+"{'chord': [1, {'chain': [1, 'err', 3]}, 3]}",dynamic,TIMEOUT,The operation timed out.
+"{'chord': [1, {'chain': [1, 'err', 3]}, 3]}",static,TIMEOUT,The operation timed out.
+"{'chord': [1, {'group': [1, 2, 3]}, 3]}",dynamic,SUCCESS,10
+"{'chord': [1, {'group': [1, 2, 3]}, 3]}",static,TIMEOUT,The operation timed out.
+"{'chord': [1, {'group': [1, 'err', 3]}, 3]}",dynamic,TIMEOUT,The operation timed out.
+"{'chord': [1, {'group': [1, 'err', 3]}, 3]}",static,TIMEOUT,The operation timed out.
+"{'chord': [1, {'chord': [1, 2, 3]}, 3]}",dynamic,SUCCESS,10
+"{'chord': [1, {'chord': [1, 2, 3]}, 3]}",static,SUCCESS,10
+"{'chord': [1, {'chord': [1, 'err', 3]}, 3]}",dynamic,TIMEOUT,The operation timed out.
+"{'chord': [1, {'chord': [1, 'err', 3]}, 3]}",static,ERROR,"Callback error: ChordError('Dependency 0f4715ac-67ea-4542-8012-a0021bd4a5e3 raised ValueError(""\'err\'"",)',)"
